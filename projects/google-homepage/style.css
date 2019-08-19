@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    position: relative;
+    min-height: 80%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: gray;
+ }
+
+#navbar ul {
+    margin-top: 15px;
+    float: right;
+    font-size: 13px;
+}
+
+#navbar li {
+    padding-right: 10px;
+    display: inline;
+}
+
+#navbar a {
+    color: black;
+}
+
+#search-container {
+    width: 530px;
+    margin: 40px auto;
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    
+    padding: 14px 15px;
+
+}
+
+#search-container:hover {
+    border: none;
+    box-shadow: 0.5px 2px 15px 0.5px lightgray;
+}
+
+#search-container:focus-within {
+    border: none;
+    box-shadow: 0.5px 2px 15px 0.5px lightgray;
+}
+
+
+input[type='text'] {
+    width: 100%;
+    height: 0px;
+    padding: 8px 5px;
+    font-size: 16px;
+    border:none;
+    outline: none;
+    text-align: left;
+}
+
+
+input[type='submit'] {
+    background-color:rgb(235, 233, 233);
+    color: dimgray;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+input[type='submit']:hover {
+    border: 0.5px solid gray;
+    background-color: rgba(245, 242, 242);
+}
+
+#google-apps {
+    margin-top: px;
+    width: 18px;
+}
+
+#sign-in {
+    background-color: #4080e7;
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    margin-right: 1em;
+    
+}
+
+#container {
+    text-align: center;
+    padding-top: 14em;
+    min-height: 100%;
+}
+
+.footer {
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: -170px;
+    padding: 0px 5px;
+    background-color: #eee;
+}
+
+.footer li {
+    display: inline;
+    color: dimgray;
+    padding-right: 20px;
+}
+.footer a {
+    color: gray;
+}

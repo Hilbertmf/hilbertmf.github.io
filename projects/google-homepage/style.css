@@ -16,6 +16,10 @@ a:hover {
     color: gray;
  }
 
+input[type='submit'] {
+    cursor: pointer;
+}
+
 #navbar ul {
     margin-top: 15px;
     float: right;
@@ -31,12 +35,26 @@ a:hover {
     color: black;
 }
 
+#google-apps {
+    margin-top: px;
+    width: 18px;
+}
+
+#sign-in {
+    background-color: #4080e7;
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    margin-right: 1em;
+}
+
 #search-container {
     width: 530px;
     margin: 40px auto;
     border-radius: 50px;
     border: 1px solid lightgray;
-    
     padding: 14px 15px;
 
 }
@@ -78,36 +96,27 @@ input[type='submit']:hover {
     background-color: rgba(245, 242, 242);
 }
 
-#google-apps {
-    margin-top: px;
-    width: 18px;
-}
-
-#sign-in {
-    background-color: #4080e7;
-    color: #fff;
-    border-radius: 2px;
-    border: none;
-    padding: 8px 12px;
-    font-weight: bold;
-    margin-right: 1em;
-    
-}
-
 #container {
     text-align: center;
     padding-top: 14em;
     min-height: 100%;
 }
 
+.link-to-google {
+    color: #1a0dab;
+}
+
+.link-to-google a:visited {
+    color: #609;
+}
+
 .footer {
-    font-size: 13px;
-    position: absolute;
+    position: fixed;
+    left: 0;
     bottom: 0;
     width: 100%;
-    margin-bottom: -170px;
-    padding: 0px 5px;
     background-color: #eee;
+    font-size: 15px;
 }
 
 .footer li {
@@ -116,5 +125,14 @@ input[type='submit']:hover {
     padding-right: 20px;
 }
 .footer a {
-    color: gray;
+    color: #5f6368;
+    font-size: 13px;
+}
+.footer ul {
+    padding-left: 30px;
+}
+.second-footer {
+    border: 1px  solid lightgray;
+    padding-left: 30px;
+    color: rgba(0,0,0,.54);
 }

@@ -1,0 +1,180 @@
+
+body {
+  background-color: white;
+  color: #303033;
+  font-family: 'K2D', sans-serif;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.5em;
+}
+
+header {
+  background:
+  linear-gradient(transparent 85%, white),
+  url('../img/background-img.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  font-size: 2em;
+  color: white;
+}
+
+header nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  line-height: 0.8;
+}
+
+header ul {
+  top: 0;
+  background-color: #003366;
+  width: 100%;
+  left: 0;
+  height: 60px;
+}
+
+header a {
+  color: white;
+  line-height: 0;
+}
+
+header a:hover {
+  color: lightblue;
+}
+
+
+header nav li {
+  display: inline;
+  font-size: 25px;
+  padding: 0 15px;
+  line-height: 0;
+}
+
+header li img {
+  float: right;
+  width: 50px;
+  padding-right: 10px;
+}
+
+
+
+@media (max-width: 940px) {
+  header li img {
+    display: none;
+  }
+}
+
+
+
+header h1 {
+  margin-top: 0;
+  padding-top: 80px;
+}
+
+#arrow {
+  max-width: 8%;
+  min-width: 6%;
+  margin-top: 40px;
+}
+
+.main-container {
+  width: 65%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    width: 90%;
+  }
+}
+
+section {
+  padding-top: 30px;
+}
+
+dt {
+  padding-top: 30px;
+}
+
+dd {
+  padding-top: 30px;
+}
+
+footer {
+  text-align: left;
+  border-top: 2px solid lightgray;
+  border-width: 100%;
+}
+
+footer h2, form {
+  margin-left: 5%;
+}
+
+a {
+  color: rgb(52, 151, 243);
+  text-decoration: none;
+}
+
+a:hover {
+  color: darkblue;
+}
+
+li, ol, ul {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  list-style: none;
+}
+
+#up p {
+  text-align: right;
+  font-size: 130%;
+}
+
+.myForm input[type='text'] {
+  display: block ;
+  width: 80%;
+  padding: 8px;
+}
+
+.myForm input[type='submit'] {
+  color: black;
+  font-weight: bold;
+  background-color: rgb(200, 200, 206);
+  display: block;
+  padding: 10px 20px;
+  border: none;
+}
+  
+textarea {
+  width: 81%;
+  height: 10em;
+  margin-top: 10px;
+}
+
+button {
+  position:relative;
+  top: -0.4em;
+}
+
+iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 950px;
+  min-width: 45px;
+}
+
+label, input {
+  margin: 20px 0;
+}

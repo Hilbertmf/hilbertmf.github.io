@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <title>Jokenpo</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>Jokenpo</h1>
+    </header>
+    <main>
+        <div class="display">
+            <div class="display-header">
+                <h1>Start a New Game!</h1>
+                <h1></h1>
+            </div>
+            
+            <div class="players">
+                <div>
+                    <h1>Human</h1>
+                    <h1>Computer</h1>
+                </div>
+                <h1 id="player-score">0</h1>
+                <h1 id="computer-score">0</h1>
+            </div>
+        </div>
+
+        <div class="player-choices">
+            <a href="#" class="disabled" id="paper"><img src="images/paper.png" alt="paper"></a>
+            <a href="#" class="disabled" id="rock"><img id="rock-img" src="images/rock.png" alt="rock"></a>
+            <a href="#" class="disabled" id="scissors"><img src="images/scissors.png" alt="scissors"></a>     
+        </div>
+        <div class="reset">
+            <button class="enabled" id="newgame-btn">New Game</button>
+            <button class="disabled" id="finishgame-btn">Finish Game</button>
+        </div>
+    </main>
+    
+
+    <script src="https://kit.fontawesome.com/58dbf040d8.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

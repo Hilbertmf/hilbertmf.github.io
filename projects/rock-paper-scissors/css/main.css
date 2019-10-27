@@ -147,11 +147,12 @@ button.disabled:hover {
 .reset {
     display: flex;
     justify-content: space-around;
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
 main {
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 130px);
 }
 
 footer {
@@ -178,6 +179,7 @@ footer {
     
     .reset {
         width: 50%;
+        margin-top: 0;
         margin: auto;
     }
     

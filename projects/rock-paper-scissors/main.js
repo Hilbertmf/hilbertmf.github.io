@@ -47,7 +47,6 @@ const animation = function(element, choice) {
         element.style.transform = 'scale(0)';
     }, 3500);
     setTimeout(() => {element.classList.remove(choice);}, 4080);
-    // element.style.transform = 'scale(1)';
 };
 
 const getRandomInteger = function(min, max) {
@@ -71,15 +70,12 @@ const getComputerPlay = function() {
 const showWinner = function() {
     let resultStr; 
     if(computerScore === playerScore) {
-        console.log('It\'s a draw!');
         resultStr = `It's a draw!`;
     }
     else if(computerScore > playerScore) {
-        console.log('Computer wins! I\'m sorry Dave. I\'m afraid I can\'t do that.');
         resultStr = `You lose!`;
     }
     else {
-        console.log('Human wins!');
         resultStr = `You win!`;
     }
     writeInScreen(displayheader, resultStr);
@@ -136,8 +132,6 @@ const gameRound = function(playerChoice) {
     
     let result = getRoundResult(playerChoice, computerChoice);
     
-    console.log('Computer plays: ', computerChoice, ' | Human plays: ', playerChoice);
-    console.log(result[0]);
     // loading
     writeInScreen(displayText, '. . . . . . .');
     
@@ -153,7 +147,11 @@ const gameRound = function(playerChoice) {
     animation(humanTurnChoice, playerChoice);
     
     setTimeout(() => {animation(computerTurnChoice, computerChoice);}, 1000);
-    window.setTimeout(() => {writeInScreen(displayText, result[0]);}, 3000 );
+    window.setTimeout(() => {
+        writeInScreen(displayText, result[0]);
+        writeInScreen(displayComputerScore, computerScore);
+        writeInScreen(displayPlayerScore, playerScore);
+    }, 3000 );
 
     window.setTimeout(() => {
         if(rounds < 4) {
@@ -171,15 +169,11 @@ const gameRound = function(playerChoice) {
         });
     }, 6100);
     
-    
-
     return result[1]; // winner
 };
 
 const gameController = function(playerChoice) {
     if(rounds === 0) {
-        console.log('Computer Score: ', computerScore);
-        console.log('Human Score: ', playerScore);
         writeInScreen(displayComputerScore, computerScore);
         writeInScreen(displayPlayerScore, playerScore);
     }
@@ -192,21 +186,15 @@ const gameController = function(playerChoice) {
     else if(winner == 'human') {
         playerScore++;
     }
-
-    console.log('Computer Score: ', computerScore);
-    console.log('Human Score: ', playerScore);
-    writeInScreen(displayComputerScore, computerScore);
-    writeInScreen(displayPlayerScore, playerScore);
-
+    
     if(rounds === 4) {
         window.setTimeout(() => {
         finish();
-        }, 6101);
+        }, 6100);
         
     }
     rounds++;
 };
-// game();
 
 // get buttons
 const newGameBtn = document.querySelector('.reset #newgame-btn');
@@ -263,11 +251,8 @@ finishGameBtn.addEventListener('click', finish);
 
 playerOptions.forEach(choice => {
     choice.addEventListener('click', () => {
-        console.log(choice);
-        console.log(choice.id);
         if(choice.classList.contains('enabled')) {
             playerChoice = choice.id;
-            
             gameController(playerChoice);
         }
     });

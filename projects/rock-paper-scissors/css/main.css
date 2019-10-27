@@ -6,14 +6,21 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: slateblue;
+html {
+    height: 100%;
 }
 
+body {
+    background-color: slateblue;
+    min-height: 100%;
+}
 
 h1 {
     text-align: center;
-    font-size: 40px;
+}
+
+p {
+    font-weight: bold;
 }
 
 div {
@@ -21,13 +28,18 @@ div {
     width: 100%;
     display: inline-flex;
     justify-content: center;
+}
+
+header {
+    border-bottom: 1px solid black;
+}
+
+.display, .player-choices, .reset {
     margin-bottom: 20px;
 }
 
 .display {
     display: block;
-    margin-top: 35px;
-    border-top: 1px solid black;
 }
 
 .display-header {
@@ -36,24 +48,64 @@ div {
     display: block;
 }
 
+.turn-play {
+    height: 100px;
+    display: flex;
+}
+.turn-play div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.human-choice, .computer-choice {
+    width: 35%;
+    transform: scale(0);
+}
+
+.rock {
+    background: url(../images/rock.png) no-repeat;
+}
+  
+.paper {
+    background: url(../images/paper.png) no-repeat;
+}
+
+.scissors {
+    background: url(../images/scissors.png) no-repeat;
+}
+
+.rock, .paper, .scissors {
+    transition: transform 1s;
+}
+
+.hidden {
+    text-align: center;
+    transform: scale(0);
+}
+
 .players {
     width: 100%;
-    /* height: 96px; */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .players div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-
-
+.players .player-score {
+    margin-right: 80px;
+}
 
 img {
     transition: transform 500ms, width 500ms, height 500ms, background-color 500ms;
+    width: 75px;
+}
+img#rock-img {
+    width: 85px;
 }
 
 a.disabled:hover {
@@ -72,14 +124,14 @@ button {
     border: none;
     background-color: black;
     color: #fff;
-    width: 150px;
-    height: 40px;
     cursor: pointer;
-    border-radius: 10px;
-    font-size: 25px;
     font-family: 'Lato', sans-serif;
     transition: transform 500ms, width 500ms, height 500ms, background-color 500ms;
     outline: none;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 150px;
+    height: 40px;
 }
 
 button.enabled:hover {
@@ -93,24 +145,57 @@ button.disabled:hover {
 }
 
 .reset {
-    width: 50%;
-    margin: auto;
     display: flex;
     justify-content: space-around;
     margin-bottom: 50px;
 }
 
-@media (min-width: 992px) {
+main {
+    min-height: calc(100vh - 120px);
+}
+
+footer {
+    text-align: center;
+}
+
+/* icon */
+.fab {
+    margin: 0 15px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.55);
+    transition: transform 500ms, width 500ms, height 500ms, background-color 500ms;
+}
+
+.fab:hover {
+    transform: scale(1.2);
+}
+
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+    
+    .reset {
+        width: 50%;
+        margin: auto;
+    }
+    
+    .human-choice, .computer-choice {
+        width: 10%;
+        transform: scale(0);
+    }
+
     .player-choices {
         padding: 0 160px;
     }
     img {
         max-width: 100%;
         height: auto;
-        width: 130px;
+        width: 100px;
     }
     
     img#rock-img {
-        width: 150px;
+        width: 110px;
     }
 }

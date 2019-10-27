@@ -35,12 +35,27 @@ const initialize = function() {
     writeInScreen(displayPlayerScore, playerScore);
 };
 
+const animation = function(element, choice) {
+    element.classList.add(choice);
+    element.classList.toggle('hidden');
+    
+    setTimeout(() => {
+        element.style.transition = 'transform 1s';
+        element.style.transform = 'scale(.8)';
+    }, 250);
+    setTimeout(() => {
+        element.style.transform = 'scale(0)';
+    }, 3500);
+    setTimeout(() => {element.classList.remove(choice);}, 4080);
+    // element.style.transform = 'scale(1)';
+};
+
 const getRandomInteger = function(min, max) {
      return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const getComputerPlay = function() {
-    let randomNumber = getRandomInteger(1,3);
+    const randomNumber = getRandomInteger(1,3);
     let play;
 
     if(randomNumber === 1)
@@ -119,14 +134,42 @@ const getRoundResult = function(playerChoice, computerChoice) {
 const gameRound = function(playerChoice) {
     computerChoice = getComputerPlay();
     
-    console.log('Computer plays: ', computerChoice, ' | Human plays: ', playerChoice);
     let result = getRoundResult(playerChoice, computerChoice);
+    
+    console.log('Computer plays: ', computerChoice, ' | Human plays: ', playerChoice);
     console.log(result[0]);
-    writeInScreen(displayText, result[0]);
+    // loading
+    writeInScreen(displayText, '. . . . . . .');
+    
+    // disable player options
+    playerOptions.forEach(choice => {
+        choice.classList.remove('enabled');
+        choice.classList.add('disabled');
+    });
+
+    // run animation
+    const humanTurnChoice = document.querySelector('.human-choice');
+    const computerTurnChoice = document.querySelector('.computer-choice');
+    animation(humanTurnChoice, playerChoice);
+    
+    setTimeout(() => {animation(computerTurnChoice, computerChoice);}, 1000);
+    window.setTimeout(() => {writeInScreen(displayText, result[0]);}, 3000 );
+
     window.setTimeout(() => {
-        writeInScreen(displayText, defaultText);
-        writeInScreen(displayheader, `Round ${rounds+1}`);
-    }, 2500);
+        if(rounds < 4) {
+            writeInScreen(displayheader, `Round ${rounds+1}`);
+            writeInScreen(displayText, defaultText);
+        }
+        else if(rounds === 4) {
+            writeInScreen(displayheader, `Last Round!`);
+            writeInScreen(displayText, defaultText);
+        }
+        // enable player options
+        playerOptions.forEach(choice => {
+            choice.classList.remove('disabled');
+            choice.classList.add('enabled');
+        });
+    }, 6100);
     
     
 
@@ -158,7 +201,7 @@ const gameController = function(playerChoice) {
     if(rounds === 4) {
         window.setTimeout(() => {
         finish();
-    }, 2500);
+        }, 6101);
         
     }
     rounds++;
@@ -225,12 +268,7 @@ playerOptions.forEach(choice => {
         if(choice.classList.contains('enabled')) {
             playerChoice = choice.id;
             
-            
             gameController(playerChoice);
-    
-            
-    
-            // Check if it's the last round
         }
     });
 });

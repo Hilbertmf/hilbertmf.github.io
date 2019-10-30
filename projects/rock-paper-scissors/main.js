@@ -1,13 +1,10 @@
 // Variables
 let playerChoice, computerChoice, playerScore, computerScore, rounds;
 const playerOptions = document.querySelectorAll('.player-choices a');
-const paper  = playerOptions[0];
-const rock = playerOptions[1];
-const scissors = playerOptions[2];
 
 // Display Elements
 const displayHeaderh1 = document.querySelectorAll('.display-header h1');
-const displayheader = displayHeaderh1[0];
+const displayHeader = displayHeaderh1[0];
 const displayText = displayHeaderh1[1];
 const displayPlayerScore = document.getElementById('player-score');
 const displayComputerScore = document.getElementById('computer-score');
@@ -15,11 +12,6 @@ const displayComputerScore = document.getElementById('computer-score');
 // Text
 const initialText = 'Start a New Game!';
 const defaultText = 'Select your choice...';
-const resultText1 = 'It\'s a tie!';
-const resultText2 = 'You Lose! Paper beats Rock!';
-const resultText3 = 'You Win! Rock beats Scissors!';
-const resultText4 = 'You Lose! Scissors beats Paper';
-
 
 const writeInScreen = function(element, string) {
     element.innerHTML = string;
@@ -43,46 +35,64 @@ const animation = function(element, choice) {
         element.style.transition = 'transform 1s';
         element.style.transform = 'scale(.8)';
     }, 250);
-    setTimeout(() => {
-        element.style.transform = 'scale(0)';
-    }, 3500);
-    setTimeout(() => {element.classList.remove(choice);}, 4080);
+    setTimeout(() => element.style.transform = 'scale(0)', 3500);
+    setTimeout(() => element.classList.remove(choice), 4080);
 };
 
-const getRandomInteger = function(min, max) {
-     return Math.floor(Math.random() * (max - min + 1) + min);
+// Generates random Integer between 0 and num - 1
+const getRandomInteger = function(num) {
+     return Math.floor(Math.random() * num);
 };
 
 const getComputerPlay = function() {
-    const randomNumber = getRandomInteger(1,3);
+    const randomNumber = getRandomInteger(3);
     let play;
 
-    if(randomNumber === 1)
+    if(randomNumber === 0)
         play = 'rock';
-    else if (randomNumber === 2)
+    else if (randomNumber === 1)
         play = 'paper';
-    else
+    else 
         play = 'scissors';
-    
     return play;
 };
 
 const showWinner = function() {
     let resultStr; 
-    if(computerScore === playerScore) {
+    if(computerScore === playerScore)
         resultStr = `It's a draw!`;
-    }
-    else if(computerScore > playerScore) {
+    else if(computerScore > playerScore)
         resultStr = `You lose!`;
-    }
-    else {
+    else
         resultStr = `You win!`;
+    writeInScreen(displayHeader, resultStr);
+};
+
+const finishGame = function() {
+    if(finishGameBtn.classList.contains('enabled')) {
+        
+        writeInScreen(displayHeader, initialText);
+        writeInScreen(displayText, '');
+
+        // disable player options
+        playerOptions.forEach(choice => {
+            choice.classList.remove('enabled');
+            choice.classList.add('disabled');
+        });
+
+        // enable newgame game
+        // disable endgame itself
+        newGameBtn.classList.remove('disabled');
+        newGameBtn.classList.add('enabled');
+        finishGameBtn.classList.remove('enabled');
+        finishGameBtn.classList.add('disabled');
+
+        showWinner();
     }
-    writeInScreen(displayheader, resultStr);
 };
 
 const getRoundResult = function(playerChoice, computerChoice) {
-    let result = new Array(3);
+    let result = new Array(2);
     if(playerChoice === computerChoice) {
         result[0] = 'It\'s a tie!';
         result[1] = 'draw';
@@ -90,40 +100,33 @@ const getRoundResult = function(playerChoice, computerChoice) {
     else if(playerChoice === 'rock') {
         if(computerChoice === 'paper') {
             result[0] = 'You Lose! Paper beats Rock!';
-            // winner
-            result[1] = 'computer';
+            result[1] = 'computer'; // winner
         }
         else {
             result[0] = 'You Win! Rock beats Scissors!';
-            // winner
-            result[1] = 'human';
+            result[1] = 'human'; // winner
         }
     }
     else if(playerChoice === 'paper') {
         if(computerChoice === 'scissors') {
             result[0] = 'You Lose! Scissors beats Paper';
-            // winner
-            result[1] = 'computer';
+            result[1] = 'computer'; // winner
         }
         else {
             result[0] = 'You win! Paper beats Rock!';
-            // winner
-            result[1] = 'human';
+            result[1] = 'human'; // winner
         }
     }
     else if(playerChoice === 'scissors') {
         if(computerChoice === 'rock') {
             result[0] = 'You Lose! Rock beats Scissors';
-            // winner
-            result[1] = 'computer';
+            result[1] = 'computer'; // winner
         }
         else {
             result[0] = 'You win! Scissors beats Paper!';
-            // winner
-            result[1] = 'human';
+            result[1] = 'human'; // winner
         }
     }
-    
     return result;
 };
 
@@ -145,21 +148,22 @@ const gameRound = function(playerChoice) {
     const humanTurnChoice = document.querySelector('.human-choice');
     const computerTurnChoice = document.querySelector('.computer-choice');
     animation(humanTurnChoice, playerChoice);
-    
     setTimeout(() => {animation(computerTurnChoice, computerChoice);}, 1000);
+    
+    // show results
     window.setTimeout(() => {
         writeInScreen(displayText, result[0]);
         writeInScreen(displayComputerScore, computerScore);
         writeInScreen(displayPlayerScore, playerScore);
-    }, 3000 );
+    }, 3000);
 
     window.setTimeout(() => {
         if(rounds < 4) {
-            writeInScreen(displayheader, `Round ${rounds+1}`);
+            writeInScreen(displayHeader, `Round ${rounds+1}`);
             writeInScreen(displayText, defaultText);
         }
         else if(rounds === 4) {
-            writeInScreen(displayheader, `Last Round!`);
+            writeInScreen(displayHeader, `Last Round!`);
             writeInScreen(displayText, defaultText);
         }
         // enable player options
@@ -180,19 +184,12 @@ const gameController = function(playerChoice) {
 
     let winner = gameRound(playerChoice);
     
-    if(winner == 'computer') {
+    if(winner === 'computer') 
         computerScore++;
-    }
-    else if(winner == 'human') {
+    else if(winner === 'human')
         playerScore++;
-    }
-    
-    if(rounds === 4) {
-        window.setTimeout(() => {
-        finish();
-        }, 6100);
-        
-    }
+    if(rounds === 4) 
+        window.setTimeout(() => finishGame(), 6100);
     rounds++;
 };
 
@@ -206,7 +203,7 @@ newGameBtn.addEventListener('click', () => {
     // Initialize variables
     initialize();
 
-    writeInScreen(displayheader, `Round ${rounds+1}`);
+    writeInScreen(displayHeader, `Round ${rounds+1}`);
     writeInScreen(displayText, defaultText);
     
     // change classes from disabled to enabled
@@ -220,34 +217,10 @@ newGameBtn.addEventListener('click', () => {
     finishGameBtn.classList.add('enabled');
     newGameBtn.classList.remove('enabled');
     newGameBtn.classList.add('disabled');
-
 });
 
-const finish = function() {
-    if(finishGameBtn.classList.contains('enabled')) {
-        
-        writeInScreen(displayheader, initialText);
-        writeInScreen(displayText, '');
-
-        // disable player options
-        playerOptions.forEach(choice => {
-            choice.classList.remove('enabled');
-            choice.classList.add('disabled');
-        });
-
-        // enable newgame game
-        // disable endgame itself
-        newGameBtn.classList.remove('disabled');
-        newGameBtn.classList.add('enabled');
-        finishGameBtn.classList.remove('enabled');
-        finishGameBtn.classList.add('disabled');
-
-        showWinner();
-    }
-};
-
 // When click finish game
-finishGameBtn.addEventListener('click', finish);
+finishGameBtn.addEventListener('click', finishGame);
 
 playerOptions.forEach(choice => {
     choice.addEventListener('click', () => {
@@ -257,5 +230,3 @@ playerOptions.forEach(choice => {
         }
     });
 });
-
-

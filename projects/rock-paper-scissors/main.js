@@ -148,7 +148,7 @@ const gameRound = function(playerChoice) {
     const humanTurnChoice = document.querySelector('.human-choice');
     const computerTurnChoice = document.querySelector('.computer-choice');
     animation(humanTurnChoice, playerChoice);
-    setTimeout(() => {animation(computerTurnChoice, computerChoice);}, 1000);
+    setTimeout(() => animation(computerTurnChoice, computerChoice), 1000);
     
     // show results
     window.setTimeout(() => {

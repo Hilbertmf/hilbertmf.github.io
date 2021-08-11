@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" style="width: 100%;">
+    <div class="row justify-content-center m-3">
+      <div class="col col-2">
+        <input class="d-inline rounded" id="minutes" type="text" value="00" step="1"> :
+        <input class="d-inline rounded" type="text" name="seconds" id="seconds" value="05" step="5">
+        <audio id="sound" preload="auto" src="sounds/alarm.mp3"></audio>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col col-2">
+        <button class="btn btn-dark" id="set-btn">Set</button>
+        <button class="btn btn-dark" id="play-btn">Play</button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <h5>
+          Recomended times for cooking rice:<br>
+          First water: takes x minutes to boil.<br>
+          Gathering rice, warming up cooking pot, oiling and warming the rice: takes y minutes.<br>
+          So wait (x-y) minutes to start warming the cooking pot<br>
+          So set cooking pot and rice in place and set timer to (x-y) minutes<br>
+          Second water: takes z minutes to boil<br>
+          Drying up the rice: takes i minutes
+        </h5>
+        <br>
+        <h5>Whole process:<br>
+        - Set water to boil, cooking pot and right amount of rice<br>
+        - Time the time it takes for the water to boil
+        - Time the time it takes for the rice to dry without scorching it</h5>
+      </div>
+    </div>   
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>

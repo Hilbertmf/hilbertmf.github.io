@@ -1,0 +1,23 @@
+body {
+  background-color: #3c3c3c;
+  color: #fff;
+  padding: 20px;
+  padding-top: 30vh;
+}
+
+p, span {
+  color: #fff;
+}
+
+div {
+  background-color: #3c3c3c;
+  color: #fff;
+}
+
+.col {
+}
+
+input {
+  width: 30px;
+  text-align: center;
+}
